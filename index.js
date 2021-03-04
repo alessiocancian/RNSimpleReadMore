@@ -3,8 +3,8 @@ import { TouchableOpacity, Text, View } from 'react-native';
 
 /**
  * @param text: could be string or component (for nested Text)
- * @param readMore: custom read more component
- * @param showLess: custom show less component
+ * @param readMoreText: custom read more component
+ * @param showLessText: custom show less component
  * @param lineHeight: line height, used to calculate lines presented
  * @param numberOfLines: max allowed lines
  */
@@ -71,12 +71,12 @@ export default class RNSimpleReadMore extends React.PureComponent {
 				</Text>
 				<View style={(truncated && !expanded) ? {} : {display: 'none'}}>
 					<TouchableOpacity onPress={() => {this.setState({expanded: true})}}>
-		        <Text style={buttonTextStyle}>Read more</Text>
+		        <Text style={buttonTextStyle}>{this.props.readMoreText || "Read more"}</Text>
 		      </TouchableOpacity>
 				</View>
 				<View style={(truncated && expanded) ? {} : {display: 'none'}}>
 					<TouchableOpacity onPress={() => {this.setState({expanded: false})}}>
-		        <Text style={buttonTextStyle}>Show less</Text>
+		        <Text style={buttonTextStyle}>{this.props.showLessText || "Show less"}</Text>
 		      </TouchableOpacity>
 				</View>
 			</View>
